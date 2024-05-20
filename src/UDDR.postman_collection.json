@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "d8d9968b-a3ac-49b3-b702-882b78d7253a",
+		"name": "UDDR",
+		"description": "# Overview\n\nThis Postman collection is designed to facilitate development, testing, and integration with the UltraDDR API. UltraDDR is a protective DNS service that enhances network security by blocking DNS queries based on predefined categories. This service is essential for organizations looking to enforce security policies and prevent access to malicious or unwanted domains.\n\n# Purpose\n\nThe primary goal of this collection is to provide a comprehensive and easy-to-use set of API requests that mirror the functionality available in the UltraDDR platform.\n\n# Structure\n\nThe requests in this collection are organized to reflect the structure of the UltraDDR API documentation, making it intuitive for users who are familiar with the Swagger documentation. Each folder in the collection corresponds to a specific area of functionality, providing a structured and logical approach to testing different aspects of the API.\n\n# Environment\n\nUsers will need to set up their Postman environment before using this collection. This includes configuring environment variables such as:\n\n- `api_key` _(required)_ - The API key is used to populate the `X-API-Key` header which is necessary to interface with any (non-DoH) endpoint.\n    \n- `client_id` _(optional)_ - The client ID is a unique identifier for each UDDR organization. It is a required part of the DoH request path for the UDDR DNS resolvers, and may be necessary as a parameter for certain API endpoints.\n    \n- `org_id` _(optional)_ - The org ID is a unique integer for each UDDR organization. It may be a necessary parameter for certain endpoints, but it an optional part of the environment.\n    \n\nInstructions for setting up these variables and other necessary configuration steps are included within the GitHub documentation.\n\n# Collection Variables\n\nThere are a couple predefined collection variables.\n\n- `api_endpoint` - This is the URL of the UDDR API.\n    \n- `resolver_endpoint` - This is the DoH URL of the UDDR DNS resolvers.\n    \n\n# Swagger\n\nThe Swagger documentation for the UDDR APIs can be found here: [https://api.ddr.ultradns.com/docs/ultraddr/](https://api.ddr.ultradns.com/docs/ultraddr/)\n\n# Contributing\n\nFeedback and contributions to this Postman collection are welcome. Users can contribute by improving existing requests, adding new ones, or enhancing documentation. Please see the contribution guidelines section on GitHub for more details on how to submit changes.\n\n# Contact\n\nFor support or any questions regarding this Postman collection or the UltraDDR API, please contact [ultraddrsupport@vercara.com](https://mailto:ultraddrsupport@vercara.com). We appreciate your input and are here to help ensure that your integration and testing efforts are successful.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2146434"
+	},
+	"item": [
+		{
+			"name": "Categories Management",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"policy_id\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/userdata/categories/v2/list",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"userdata",
+								"categories",
+								"v2",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"blocked\": true,\n  \"categories\": [\n    \"Adult\"\n  ],\n  \"policy_id\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/userdata/categories/v2/update",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"userdata",
+								"categories",
+								"v2",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This section contains APIs related to the management of content categories. These categories define different types of content that can be blocked based on organizational security policies and preferences.\n\n# Endpoints\n\n## List\n\n`POST` `/userdata/categories/v2/list`\n\nReturns a list of all categories.\n\n### Request Params\n\n- `policy_id` _(integer)_ _**(required)**_ - ID of the policy to return. `0` will be the \"default\" policy.\n    \n\n### Response Params\n\n- `items` _(array)_ - A list of objects containing the following:\n    - `category` _(string)_ - Name of the category.\n    - `blocked` _(boolean)_ - Whether the category is being blocked by the given policy.\n    - `query_count` _(integer)_ - Number of queries of domains within the category in the current calendar month.\n    - `modified_by` _(string)_ - Username of the last user to modify this category (toggle on/off).\n\n## Update\n\n`POST` `/userdata/categories/v2/update`\n\nUpdate a list of categories.\n\n### Request Params\n\n- `blocked` _(boolean)_ **(required)** - Toggle on or off.\n- `categories` _(array)_ **(required)** - A list of strings containing the names of the categories to update.\n- `policy_id` _(integer)_ **(required)** - ID of the policy to update.\n    \n\n### Response\n\nNone"
+		},
+		{
+			"name": "Domain Category",
+			"item": [
+				{
+					"name": "Dispute",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"categories\": [\n    \"Adult\",\n    \"Gambling\"\n  ],\n  \"comment\": \"test comment\",\n  \"domain\": \"example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/category/v1/dispute",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"category",
+								"v1",
+								"dispute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"domain\": \"example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/category/v1",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"category",
+								"v1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This section contains APIs related to the categorization of fully qualified domain names (FQDNs). These endpoints allow users to determine the current category of a domain and to dispute this categorization if they believe it is incorrect.\n\n# Endpoints\n\n## Category\n\n`POST` `/category/v1`\n\nReturns the current categories of a given FQDN.\n\n### Request Params\n\n- `domain` _(string)_ **(required)** - Fully-qualified domain name, i.e. google.com.\n    \n\n### Response\n\nThe response to this API is a list of strings (not an object). A domain can have more than one category, though it is not especially common.\n\n## Dispute\n\n`POST` `/category/v1/dispute`\n\nSubmits a dispute request for miscategorized domains.\n\n### Request Params\n\n- `domain` _(string)_ **(required)** - FQDN which is miscategorized.\n- `categories` _(array)_ **(required)** - List of categories that the FQDN should fall under. The list can be empty if no categories apply, but the parameter cannot be ommitted completely.\n- `comment` _(string)_ **(optional)** - Comments about the request.\n    \n\n### Response\n\nNone"
+		},
+		{
+			"name": "Log Runner",
+			"item": [
+				{
+					"name": "Submit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef0642c-c315-4cd0-8318-3ce991dbd969"
+								},
+								{
+									"key": "request",
+									"value": "{}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/dns-log-runner/submit",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"dns-log-runner",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/dns-log-runner/list",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"dns-log-runner",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fileUpload_id\": 0\n}"
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/dns-log-runner/delete",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"dns-log-runner",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The log runner API allows users to upload their own set of DNS query logs. These logs will be indexed into the DNS Logs interface.\n\n# Endpoints\n\n## Submit\n\n`POST` `/dns-log-runner/submit`\n\nSubmit a list of domains to be analyzed. This functionality can be used too seed the UDDR engine with IoCs. The request is multi-part and requires a specific CSV format:\n\n`\"date\",\"clientip\",\"query type\",\"query\"`\n\n### Request Params\n\nThis is `form-data` with two parts: a file and an (optional) JSON payload\n\n- `file` _(csv)_ **(required)** - The expected file is a CSV with the following columns.  \n    `\"date\",\"clientip\",\"query type\",\"query\"`  \n    The date should be an ISO 8601 format of `YYYY-MM-DD hh:mm:ss`\n    \n- request _(json)_ **(optional)** - In the request parameter you can pass JSON to identify the `organization_id`, however this API will default to the `organization_id` associated with the API key so it is not required.  \n    `{\"organization_id\":int}`  \n    The parameter is intended for API keys that may be associated with multiple organizations, which the typical user's is not, therefore it can be left empty (`{}`).\n    \n\n### Response Params\n\n- `id` _(int)_ - An identifier for the file upload. This is just an incrementing integer.\n    \n\n## List\n\n`POST` `/dns-log-runner/list`\n\nReturns a list of all uploaded files.\n\n### Request\n\nNo params are required. An empty JSON object will suffice (`{}`).\n\n### Response Params\n\n- `results` _(array)_ - A list of file upload objects.\n    \n    - `id` _(int)_ - A unique identifier for the upload.\n        \n    - `storageFilename` _(string)_ - The name of the file on the server (it is the `filename` prefixed with a UID).\n        \n    - `filename` _(string)_ - The name of the file as it was uploaded.\n        \n    - `status` _(string)_ - The status of the file upload. Possible values are:\n        \n        - `CREATED`\n            \n        - `CREATING`\n            \n        - `DELETED`\n            \n        - `PROCESSING`\n            \n        - `COMPLETE`\n            \n    - `organization_id` _(int)_ - The organization to which the file belongs.\n        \n    - `created_on` _(string)_ - The (ISO 8601) date on which the file was created.\n        \n    - `created_by` _(string)_ - The email of the user that uploaded the file.\n        \n\n## Delete\n\n`POST` `/dns-log-runner/delete`\n\nDeletes a specified file upload.\n\n### Request Params\n\n- `fileUpload_id` _(int)_ **(required)** - The id of the file upload.\n    \n\n### Response\n\nNone"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_endpoint",
+			"value": "https://api.ddr.ultradns.com",
+			"type": "string"
+		},
+		{
+			"key": "resolver_endpoint",
+			"value": "https://rcsv.ddr.ultradns.com",
+			"type": "string"
+		}
+	]
+}
