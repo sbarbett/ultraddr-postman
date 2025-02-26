@@ -1,12 +1,207 @@
 {
 	"info": {
-		"_postman_id": "d8d9968b-a3ac-49b3-b702-882b78d7253a",
 		"name": "UDDR",
-		"description": "# Overview\n\nThis Postman collection is designed to facilitate development, testing, and integration with the UltraDDR API. UltraDDR is a protective DNS service that enhances network security by blocking DNS queries based on predefined categories. This service is essential for organizations looking to enforce security policies and prevent access to malicious or unwanted domains.\n\n# Purpose\n\nThe primary goal of this collection is to provide a comprehensive and easy-to-use set of API requests that mirror the functionality available in the UltraDDR platform.\n\n# Structure\n\nThe requests in this collection are organized to reflect the structure of the UltraDDR API documentation, making it intuitive for users who are familiar with the Swagger documentation. Each folder in the collection corresponds to a specific area of functionality, providing a structured and logical approach to testing different aspects of the API.\n\n# Environment\n\nUsers will need to set up their Postman environment before using this collection. This involves configuring the API key as an environment variable:\n\n- `api_key` _(required)_ - The API key is used to populate the `X-API-Key` header which is necessary to interface with any (non-DoH) endpoint.\n    \n\nInstructions for setting up these variables and other necessary configuration steps are included within the GitHub documentation.\n\n# Collection Variables\n\nThere are a couple predefined collection variables.\n\n- `api_endpoint` - This is the URL of the UDDR API.\n    \n- `resolver_endpoint` - This is the DoH URL of the UDDR DNS resolvers.\n    \n\n# Pre-request Scripts\n\nThe collection has some pre-request scripts that will run every time a request is made.\n\n## Updating Environment\n\nIf certain variables are not already set, they'll be automatically populated from your organization data.\n\n- `client_id` - The client ID is a unique identifier for each UDDR organization. It is a required part of the DoH request path for the UDDR DNS resolvers, and may be necessary as a parameter for certain API endpoints.\n    \n- `organization_id` - The org ID is a unique integer for each UDDR organization. It may be a necessary parameter for certain endpoints.\n    \n- `organization_name` - The canonical name of the organization in UDDR.\n    \n\n## Date Variables\n\nFor convenience, a set of variables that contain pre-formatted ISO 8601 will be automatically set in the environment. These variables will always begin with `date_` and end with `_start` or `_end`. The pre-defined ranges mirror what is available in the user interface and are as follows:\n\n- `today`\n    \n- `yesterday`\n    \n- `last5days`\n    \n- `last7days`\n    \n- `last15days`\n    \n- `last30days`\n    \n- `thismonth`\n    \n- `lastmonth`\n    \n- `last5min`\n    \n- `last10min`\n    \n- `last15min`\n    \n- `last30min`\n    \n- `lasthour`\n    \n- `last8hours`\n    \n- `last12hours`\n    \n- `last24hours`\n    \n\n**Usage Example:**\n\n``` json\n{\n  \"start\": {{date_last5hours_start}},\n  \"end\": {{date_last5hours_end}}\n}\n\n ```\n\n# Swagger\n\nThe Swagger documentation for the UDDR APIs can be found here: [https://api.ddr.ultradns.com/docs/ultraddr/](https://api.ddr.ultradns.com/docs/ultraddr/)\n\n# Contributing\n\nFeedback and contributions to this Postman collection are welcome. Users can contribute by improving existing requests, adding new ones, or enhancing documentation. Please see the contribution guidelines section on GitHub for more details on how to submit changes.\n\n# Contact\n\nFor support or any questions regarding this Postman collection or the UltraDDR API, please contact [ultraddrsupport@vercara.com](https://mailto:ultraddrsupport@vercara.com). We appreciate your input and are here to help ensure that your integration and testing efforts are successful.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2146434"
+		"description": "# Overview\n\nThis Postman collection is designed to facilitate development, testing, and integration with the UltraDDR API. UltraDDR is a protective DNS service that enhances network security by blocking DNS queries based on predefined categories. This service is essential for organizations looking to enforce security policies and prevent access to malicious or unwanted domains.\n\n# Purpose\n\nThe primary goal of this collection is to provide a comprehensive and easy-to-use set of API requests that mirror the functionality available in the UltraDDR platform.\n\n# Structure\n\nThe requests in this collection are organized to reflect the structure of the UltraDDR API documentation, making it intuitive for users who are familiar with the Swagger documentation. Each folder in the collection corresponds to a specific area of functionality, providing a structured and logical approach to testing different aspects of the API.\n\n# Environment\n\nUsers will need to set up their Postman environment before using this collection. This involves configuring the API key as an environment variable:\n\n- `api_key` _(required)_ - The API key is used to populate the `X-API-Key` header which is necessary to interface with any (non-DoH) endpoint.\n    \n\nInstructions for setting up these variables and other necessary configuration steps are included within the GitHub documentation.\n\n# Collection Variables\n\nThere are a couple predefined collection variables.\n\n- `api_endpoint` - This is the URL of the UDDR API.\n    \n- `resolver_endpoint` - This is the DoH URL of the UDDR DNS resolvers.\n    \n\n# Pre-request Scripts\n\nThe collection has some pre-request scripts that will run every time a request is made.\n\n## Updating Environment\n\nIf certain variables are not already set, they'll be automatically populated from your organization data.\n\n- `client_id` - The client ID is a unique identifier for each UDDR organization. It is a required part of the DoH request path for the UDDR DNS resolvers, and may be necessary as a parameter for certain API endpoints.\n    \n- `organization_id` - The org ID is a unique integer for each UDDR organization. It may be a necessary parameter for certain endpoints.\n    \n- `organization_name` - The canonical name of the organization in UDDR.\n    \n\n## Date Variables\n\nFor convenience, a set of variables that contain pre-formatted ISO 8601 will be automatically set in the environment. These variables will always begin with `date_` and end with `_start` or `_end`. The pre-defined ranges mirror what is available in the user interface and are as follows:\n\n- `today`\n    \n- `yesterday`\n    \n- `last5days`\n    \n- `last7days`\n    \n- `last15days`\n    \n- `last30days`\n    \n- `thismonth`\n    \n- `lastmonth`\n    \n- `last5min`\n    \n- `last10min`\n    \n- `last15min`\n    \n- `last30min`\n    \n- `lasthour`\n    \n- `last8hours`\n    \n- `last12hours`\n    \n- `last24hours`\n    \n\n**Usage Example:**\n\n``` json\n{\n  \"start\": {{date_last5hours_start}},\n  \"end\": {{date_last5hours_end}}\n}\n\n ```\n\n# Pagination\n\nEndpoints with an exceptionally large number of items in the response may require pagination to iterate through all the data. If an endpoint supports pagination, it will be indicated in the request payload. The `paging` object is structured as follows.\n\n- `order` _(string)_ - Specify either ascending (`asc`) or descending (`desc`).\n    \n- `pageNumber` _(int)_ - Starting page, with the index beginning at `0`. i.e. if the `pageSize` is `50`, page `0` will contain items 1-50, page `1` will contain 51-101, and so forth.\n    \n- `pageSize` _(int)_ - The number of items to show in a response.\n    \n- `sort` _(string)_ - Sort by a specific property of the data. Enumerators will vary depending on the response data.\n    \n\n# Swagger\n\nThe Swagger documentation for the UDDR APIs can be found here: [https://api.ddr.ultradns.com/docs/ultraddr/](https://api.ddr.ultradns.com/docs/ultraddr/)\n\n# Contributing\n\nFeedback and contributions to this Postman collection are welcome. Users can contribute by improving existing requests, adding new ones, or enhancing documentation. Please see the contribution guidelines section on GitHub for more details on how to submit changes.\n\n# Contact\n\nFor support or any questions regarding this Postman collection or the UltraDDR API, please contact [ultraddrsupport@vercara.com](https://mailto:ultraddrsupport@vercara.com). We appreciate your input and are here to help ensure that your integration and testing efforts are successful.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "DNS Lookup",
+			"item": [
+				{
+					"name": "Querystring",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/dns+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{resolver_endpoint}}/{{client_id}}?name=www.google.com",
+							"host": [
+								"{{resolver_endpoint}}"
+							],
+							"path": [
+								"{{client_id}}"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "www.google.com"
+								},
+								{
+									"key": "type",
+									"value": "AAAA",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Binary (Advanced)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Function to parse DNS binary response",
+									"function parseDNSResponse(buffer) {",
+									"    // Transaction ID",
+									"    const transactionID = buffer.readUInt16BE(0).toString(16);",
+									"",
+									"    // Flags",
+									"    const flags = buffer.readUInt16BE(2).toString(16);",
+									"",
+									"    // Question Count",
+									"    const qdcount = buffer.readUInt16BE(4);",
+									"",
+									"    // Answer Count",
+									"    const ancount = buffer.readUInt16BE(6);",
+									"",
+									"    // Start parsing the Question Section, assuming it starts at byte 12",
+									"    let position = 12;",
+									"    let question = \"\";",
+									"    while (buffer[position] !== 0) {",
+									"        if (question.length > 0) question += \".\";",
+									"        let labelLength = buffer[position];",
+									"        position += 1;",
+									"        question += buffer.toString('ascii', position, position + labelLength);",
+									"        position += labelLength;",
+									"    }",
+									"    // Move past the null byte and Type and Class",
+									"    position += 5;",
+									"",
+									"    // Parsing the Answer Section",
+									"    let answers = [];",
+									"    for (let i = 0; i < ancount; i++) {",
+									"        let answer = {};",
+									"        // Name (a pointer typically to the question section, shown as a 2 byte number)",
+									"        let namePointer = buffer.readUInt16BE(position);",
+									"        answer['NamePointer'] = namePointer;",
+									"        position += 2;",
+									"",
+									"        // Type",
+									"        answer['Type'] = buffer.readUInt16BE(position);",
+									"        position += 2;",
+									"",
+									"        // Class",
+									"        answer['Class'] = buffer.readUInt16BE(position);",
+									"        position += 2;",
+									"",
+									"        // TTL",
+									"        answer['TTL'] = buffer.readUInt32BE(position);",
+									"        position += 4;",
+									"",
+									"        // Data Length",
+									"        let dataLength = buffer.readUInt16BE(position);",
+									"        position += 2;",
+									"",
+									"        // Data",
+									"        answer['Data'] = buffer.slice(position, position + dataLength);",
+									"        position += dataLength;",
+									"",
+									"        answers.push(answer);",
+									"    }",
+									"",
+									"    return {",
+									"        TransactionID: transactionID,",
+									"        Flags: flags,",
+									"        QuestionCount: qdcount,",
+									"        Question: question,",
+									"        Type: 1,",
+									"        Class: 1,",
+									"        AnswerCount: ancount,",
+									"        Answers: answers",
+									"    };",
+									"}",
+									"",
+									"// Convert the ArrayBuffer (response body) to Buffer (Node.js style, which Postman uses)",
+									"const buffer = Buffer.from(pm.response.stream);",
+									"",
+									"// Parse the DNS response",
+									"const dnsResponse = parseDNSResponse(buffer);",
+									"",
+									"// Log or set an environment variable with the readable output",
+									"console.log(dnsResponse);",
+									"pm.environment.set(\"dnsResponse\", JSON.stringify(dnsResponse));",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-UltraDDR-Client-Id",
+								"value": "{{client_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/dns-message",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "postman-cloud:///1ef6b8f0-6c6e-4c50-8e33-edae415905f7"
+							}
+						},
+						"url": {
+							"raw": "{{resolver_endpoint}}/dns-query",
+							"host": [
+								"{{resolver_endpoint}}"
+							],
+							"path": [
+								"dns-query"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Requests for sending DNS queries to the UDDR resolvers over HTTPS. This is the same transport layer used by the UDDR agent. This is a different endpoint, {{resolver_endpoint}}, which is not a part of the standard \"API.\" Queries are associated with an account using its \"client_id\" (also known as \"install_key\").\n\n# Endpoints\n\n## Querystring\n\n`GET` `/{{client_id}}`\n\nThe standard format for sending a DoH (DNS-over-HTTPS) request is supported.\n\n### Request Parameters\n\n- `name` _(string)_ **(required)** - An FQDN to query\n    \n- `type` _(string)_ **(optional)** - A DNS record type, i.e. A, AAAA, CNAME, etc.\n    \n\n### Response Payload\n\nThe response will be a dns+json. For more information, see \\[RFC 8484\\]([https://datatracker.ietf.org/doc/html/rfc8484](https://datatracker.ietf.org/doc/html/rfc8484)).\n\n## Binary\n\n`POST` `/dns-query`\n\nThe DNS resolvers will accept queries as a binary payload over HTTPS in the form of a POST request.\n\n### Request Payload\n\nYou will need to upload a `.bin` file to Postman. \\[Here\\]([https://github.com/sbarbett/dns_makebin](https://github.com/sbarbett/dns_makebin)) is a tool to help build basic queries in binary format.\n\n### Response Payload\n\nLikewise, the response will be in binary. You can download this from Postman as a file in raw format. There is also a post-request script that will interpret the binary stream and log it to the Postman console.",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
 		{
 			"name": "Categories Management",
 			"item": [
@@ -613,41 +808,277 @@
 					"response": []
 				}
 			],
-			"description": "The Alert Management API is for managing alerts and notifications that are produced by domains being blocked or suspicious.\n\n# Endpoints\n\n## Get Alerts\n\n`POST` `/protect-verdict-manager/alert`\n\nSend a request with some filters to receive a list of alerts. Dates are in the `YYYY-MM-DDThh:mm:ss.sssZ` ISO 8601 format.\n\n### Request Params\n\n- `filters` _(dict)_ **(required)** - An object containing filters for the query. There must be at least 1 filter present.\n    \n    - `acknowledged` _(boolean)_ - Whether the alert has been acknowledged.\n        \n    - `age` _(dict)_ - An object containing a range for the domain age.\n        \n        - `start` _(int)_ - Lower threshold.\n            \n        - `end` (int) - Upper threshold.\n            \n    - `domain` _(string)_ - Apex domain name.\n        \n    - `fqdn` _(string)_ - Fully-qualified domain name (includes subdomains).\n        \n    - `status` _(string)_ - Status of the domain, which can be \"suspicious,\" \"bad\" or \"blocked.\"\n        \n    - `firstSeen` _(dict_) - An object containing a date range for when the alert was first seen.\n        \n        - `start` _(string)_\n            \n        - `end` _(string)_\n            \n    - `lastSeen` _(dict)_ - An object containing a date range for when the alert was last seen.\n        \n        - `start` _(string)_\n            \n        - `end` _(string)_\n            \n- `paging` _(dict)_ **(optional)** - You may define thresholds for how many results are returned in a single request and paginate through responses.\n    \n    - `order` _(string)_ - Specify either ascending (`asc`) or descending (`desc`).\n        \n    - `pageNumber` _(int)_ - Starting page, with the index beginning at `0`. i.e. if the `pageSize` is `50`, page `0` will contain alerts 1-50, page `1` will contain 51-101, and so forth.\n        \n    - `pageSize` _(int)_ - The number of alerts to show in a response.\n        \n    - `sort` _(string)_ - Sort by a specific property of the data. Valid options are \"timestamp,\" \"domain,\" \"fqdn,\" \"acknowledged,\" \"age,\" \"firstseen,\" \"lastseen,\" \"status.\"\n        \n\n### Response Params\n\nThe response will contain a list of items, each item being an object which represents an alert.\n\n- `id` _(int)_ - A UID for the alert.\n    \n- `clientIp` _(string)_ - IP address of the client from which the query originated.\n    \n- `timestamp` _(string)_ - ISO-formatted timestamp of the alert.\n    \n- `firstSeen` _(string)_ - Timestamp of when the domain was first seen.\n    \n- `lastSeen` _(string)_ - Timestamp of when the domain was last seen.\n    \n- `status` _(string)_ - Statuses are \"suspicious,\" \"bad\" or \"blocked.\"\n    \n- `domain` _(string)_ - Apex domain name.\n    \n- `fqdn` _(string)_ - Fully-qualified domain name.\n    \n- `age` _(int)_ - Age of the domain in days.\n    \n- `domainCreated` _(string)_ - Timestamp of when the domain was registered.\n    \n- `reasons` _(list)_ - This will be a list of strings providing more details on the reason a domain was flagged, if applicable.\n    \n- `acknowledged` _(boolean)_ - Whether the alert has been acknowledged.\n    \n- `targets` _(list)_ - A list of parameters (strings) that were flagged for alert. For example, \"domain.\"\n    \n\n## Delete Alerts\n\n`DELETE` `/protect-verdict-manager/alert`\n\nDelete a subset of alerts.\n\n### Request Payload\n\nThe payload for this request is an array containing a list of integers, where the integers are alert IDs. Example:\n\n`[0, 1, 2, 3]`\n\n### Response\n\nThe response code will be `200` and have an empty body.\n\n## Get Alerts Count\n\n`GET` `/protect-verdict-manager/alert/count`\n\nReturns a count of alerts, either all, acknowledged or unacknowledged.\n\n### Request Parameters\n\n- `acknowledged` _(boolean)_ **(optional)** - Returns a count of acknowledged (`true`) or unacknowledged (`false`) alerts. If omitted completely, a count of all alerts will be produced.\n    \n\n### Response Payload\n\nThe response is a plain text integer, although it will have an `application/json` content-type header.\n\n## Mail Alert List\n\n`POST` `/protect-verdict-manager/alert/mail`\n\nSends an email containing details on a list of alerts.\n\n### Request Payload\n\n- `alertIds` _(list)_ **(required)** - A list of integers representing alert IDs.\n    \n- `emails` _(list)_ **(required)** - A list of strings representing emails.\n    \n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Mail Alert\n\n`POST` `/protect-verdict-manager/alert/mail/{{alert_id}}`\n\nEmails a single alert to a list of users.\n\n### Request Payload\n\nThe request payload is an array with a list of strings representing emails.\n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Set Alert List Status\n\n`POST` `/protect-verdict-manager/alert/status`\n\nSet the status of a list of alerts.\n\n### Request Parameters\n\nThe request contains both a querystring and payload.\n\n- `acknowledged` _(boolean)_ **(required)** - Set the status to either acknowledged or unacknowledged.\n    \n\n### Request Payload\n\nAn array containing a list of integers representing alert IDs.\n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Get Alert\n\n`GET` `/protect-verdict-manager/alert/{{alert_id}}`\n\nGet an alert by ID.\n\n### Request Parameters\n\nNone\n\n### Response Payload\n\nAn alert object.\n\n- `id` _(int)_ - A UID for the alert.\n    \n- `clientIp` _(string)_ - IP address of the client from which the query originated.\n    \n- `timestamp` _(string)_ - ISO-formatted timestamp of the alert.\n    \n- `firstSeen` _(string)_ - Timestamp of when the domain was first seen.\n    \n- `lastSeen` _(string)_ - Timestamp of when the domain was last seen.\n    \n- `status` _(string)_ - Statuses are \"suspicious,\" \"bad\" or \"blocked.\"\n    \n- `domain` _(string)_ - Apex domain name.\n    \n- `fqdn` _(string)_ - Fully-qualified domain name.\n    \n- `age` _(int)_ - Age of the domain in days.\n    \n- `domainCreated` _(string)_ - Timestamp of when the domain was registered.\n    \n- `reasons` _(list)_ - This will be a list of strings providing more details on the reason a domain was flagged, if applicable.\n    \n- `acknowledged` _(boolean)_ - Whether the alert has been acknowledged.\n    \n- `targets` _(list)_ - A list of parameters (strings) that were flagged for alert. For example, \"domain.\"\n    \n\n## Delete Alert\n\n`DELETE` `/protect-verdict-manager/alert/{{alert_id}}`\n\nDelete an alert by ID.\n\n### Request Parameters\n\nNone\n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Set Alert Status\n\n`POST` `/protect-verdict-manager/alert/{{alert_id}}`\n\nUpdate an alert by ID.\n\n### Request Parameters\n\n- `acknowledged` _(boolean)_ **(required)** - Set the status to either acknowledged or unacknowledged.\n    \n- `clientId` _(string)_ **(required)** - Unique client ID of the UDDR account (automatically retrieved in pre-request)\n    \n\n### Request Payload\n\nNone\n\n### Response\n\nThe response will be a 200 with an empty body."
+			"description": "The Alert Management API is for managing alerts and notifications that are produced by domains being blocked or suspicious.\n\n# Endpoints\n\n## Get Alerts\n\n`POST` `/protect-verdict-manager/alert`\n\nSend a request with some filters to receive a list of alerts. Dates are in the `YYYY-MM-DDThh:mm:ss.sssZ` ISO 8601 format.\n\n### Request Params\n\n- `filters` _(dict)_ **(required)** - An object containing filters for the query. There must be at least 1 filter present.\n    \n    - `acknowledged` _(boolean)_ - Whether the alert has been acknowledged.\n        \n    - `age` _(dict)_ - An object containing a range for the domain age.\n        \n        - `start` _(int)_ - Lower threshold.\n            \n        - `end` (int) - Upper threshold.\n            \n    - `domain` _(string)_ - Apex domain name.\n        \n    - `fqdn` _(string)_ - Fully-qualified domain name (includes subdomains).\n        \n    - `status` _(string)_ - Status of the domain, which can be \"suspicious,\" \"bad\" or \"blocked.\"\n        \n    - `firstSeen` _(dict_) - An object containing a date range for when the alert was first seen.\n        \n        - `start` _(string)_\n            \n        - `end` _(string)_\n            \n    - `lastSeen` _(dict)_ - An object containing a date range for when the alert was last seen.\n        \n        - `start` _(string)_\n            \n        - `end` _(string)_\n            \n- `paging` _(dict)_ **(optional)** - For more information on pagination, please refer to the \"Pagination\" section in the main README at the root of this collection.\n    \n\n### Response Params\n\nThe response will contain a list of items, each item being an object which represents an alert.\n\n- `id` _(int)_ - A UID for the alert.\n    \n- `clientIp` _(string)_ - IP address of the client from which the query originated.\n    \n- `timestamp` _(string)_ - ISO-formatted timestamp of the alert.\n    \n- `firstSeen` _(string)_ - Timestamp of when the domain was first seen.\n    \n- `lastSeen` _(string)_ - Timestamp of when the domain was last seen.\n    \n- `status` _(string)_ - Statuses are \"suspicious,\" \"bad\" or \"blocked.\"\n    \n- `domain` _(string)_ - Apex domain name.\n    \n- `fqdn` _(string)_ - Fully-qualified domain name.\n    \n- `age` _(int)_ - Age of the domain in days.\n    \n- `domainCreated` _(string)_ - Timestamp of when the domain was registered.\n    \n- `reasons` _(list)_ - This will be a list of strings providing more details on the reason a domain was flagged, if applicable.\n    \n- `acknowledged` _(boolean)_ - Whether the alert has been acknowledged.\n    \n- `targets` _(list)_ - A list of parameters (strings) that were flagged for alert. For example, \"domain.\"\n    \n\n## Delete Alerts\n\n`DELETE` `/protect-verdict-manager/alert`\n\nDelete a subset of alerts.\n\n### Request Payload\n\nThe payload for this request is an array containing a list of integers, where the integers are alert IDs. Example:\n\n`[0, 1, 2, 3]`\n\n### Response\n\nThe response code will be `200` and have an empty body.\n\n## Get Alerts Count\n\n`GET` `/protect-verdict-manager/alert/count`\n\nReturns a count of alerts, either all, acknowledged or unacknowledged.\n\n### Request Parameters\n\n- `acknowledged` _(boolean)_ **(optional)** - Returns a count of acknowledged (`true`) or unacknowledged (`false`) alerts. If omitted completely, a count of all alerts will be produced.\n    \n\n### Response Payload\n\nThe response is a plain text integer, although it will have an `application/json` content-type header.\n\n## Mail Alert List\n\n`POST` `/protect-verdict-manager/alert/mail`\n\nSends an email containing details on a list of alerts.\n\n### Request Payload\n\n- `alertIds` _(list)_ **(required)** - A list of integers representing alert IDs.\n    \n- `emails` _(list)_ **(required)** - A list of strings representing emails.\n    \n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Mail Alert\n\n`POST` `/protect-verdict-manager/alert/mail/{{alert_id}}`\n\nEmails a single alert to a list of users.\n\n### Request Payload\n\nThe request payload is an array with a list of strings representing emails.\n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Set Alert List Status\n\n`POST` `/protect-verdict-manager/alert/status`\n\nSet the status of a list of alerts.\n\n### Request Parameters\n\nThe request contains both a querystring and payload.\n\n- `acknowledged` _(boolean)_ **(required)** - Set the status to either acknowledged or unacknowledged.\n    \n\n### Request Payload\n\nAn array containing a list of integers representing alert IDs.\n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Get Alert\n\n`GET` `/protect-verdict-manager/alert/{{alert_id}}`\n\nGet an alert by ID.\n\n### Request Parameters\n\nNone\n\n### Response Payload\n\nAn alert object.\n\n- `id` _(int)_ - A UID for the alert.\n    \n- `clientIp` _(string)_ - IP address of the client from which the query originated.\n    \n- `timestamp` _(string)_ - ISO-formatted timestamp of the alert.\n    \n- `firstSeen` _(string)_ - Timestamp of when the domain was first seen.\n    \n- `lastSeen` _(string)_ - Timestamp of when the domain was last seen.\n    \n- `status` _(string)_ - Statuses are \"suspicious,\" \"bad\" or \"blocked.\"\n    \n- `domain` _(string)_ - Apex domain name.\n    \n- `fqdn` _(string)_ - Fully-qualified domain name.\n    \n- `age` _(int)_ - Age of the domain in days.\n    \n- `domainCreated` _(string)_ - Timestamp of when the domain was registered.\n    \n- `reasons` _(list)_ - This will be a list of strings providing more details on the reason a domain was flagged, if applicable.\n    \n- `acknowledged` _(boolean)_ - Whether the alert has been acknowledged.\n    \n- `targets` _(list)_ - A list of parameters (strings) that were flagged for alert. For example, \"domain.\"\n    \n\n## Delete Alert\n\n`DELETE` `/protect-verdict-manager/alert/{{alert_id}}`\n\nDelete an alert by ID.\n\n### Request Parameters\n\nNone\n\n### Response\n\nThe response will be a 200 with an empty body.\n\n## Set Alert Status\n\n`POST` `/protect-verdict-manager/alert/{{alert_id}}`\n\nUpdate an alert by ID.\n\n### Request Parameters\n\n- `acknowledged` _(boolean)_ **(required)** - Set the status to either acknowledged or unacknowledged.\n    \n- `clientId` _(string)_ **(required)** - Unique client ID of the UDDR account (automatically retrieved in pre-request)\n    \n\n### Request Payload\n\nNone\n\n### Response\n\nThe response will be a 200 with an empty body."
 		},
 		{
-			"name": "DNS Lookup",
+			"name": "Event Management",
 			"item": [
 				{
-					"name": "Querystring",
+					"name": "Get Event",
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
 								"key": "Accept",
-								"value": "application/dns+json",
+								"value": "*/*",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \"example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{resolver_endpoint}}/{{client_id}}?name=www.google.com",
+							"raw": "{{api_endpoint}}/protect-verdict-manager/event",
 							"host": [
-								"{{resolver_endpoint}}"
+								"{{api_endpoint}}"
 							],
 							"path": [
-								"{{client_id}}"
+								"protect-verdict-manager",
+								"event"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Event Management API is for managing details pertaining to a specific artifact (domain or FQDN, for example).\n\n# Endpoints\n\n## Get Event\n\n`POST` `/protect-verdict-manager/event`\n\nRetrieve event details for a given value.\n\n### Request Payload\n\n- `value` _(string)_ **(required)** - A domain or FQDN (artifact)\n    \n\n### Response Payload\n\nAn array of objects containing event parameters.\n\n- `timestamp` _(string)_ - An ISO 8601 formatted date and time.\n    \n- `text` _(string)_ - A description or label for the event parameter, i.e. \"First seen\" and \"Last seen.\""
+		},
+		{
+			"name": "Executive Report Management",
+			"item": [
+				{
+					"name": "List Reports",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"applied_filters\": {\n        \"datetime_start\": \"{{date_last30days_start}}\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/userdata/protect/reports",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"userdata",
+								"protect",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"applied_filters\": {\n        \"report_id\": \"xxxx-xxxx-xxxx-xxxx-xxxx\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/userdata/protect/report",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"userdata",
+								"protect",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "document",
+									"type": "file",
+									"src": "postman-cloud:///1ef6eb80-8bff-4390-997e-a8e57768ec2f"
+								},
+								{
+									"key": "json_data",
+									"type": "file",
+									"src": "postman-cloud:///1ef6eb83-0f5d-45f0-8e9a-b11ec1b0c741"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/userdata/protect/save_report",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"userdata",
+								"protect",
+								"save_report"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Executive Report Management API is for retrieving the system-generated executive summaries and uploading custom reports.\n\n# Endpoints\n\n## List Reports\n\n`POST` `/userdata/protect/reports`\n\nRetrieve a list of all reports or reports from a specific timeframe.\n\n### Request Payload\n\nThe `applied_filters` object is optional and may contain one or both of the following.\n\n- `start_date` _(string)_ **(optional)** - An ISO 8601 starting datetime.\n    \n- `end_date` _(string)_ **(optional)** - An ISO 8601 ending datetime.\n    \n\n### Response Payload\n\n- `total_count` _(int)_ - The number of reports returned.\n    \n- `reports` _(list)_ - An array of objects containing report details.\n    \n    - `report_id` _(string)_ - A UID for the given report.\n        \n    - `client_id` _(string)_ - The UID for the account the report is associated with.\n        \n    - `datetime` _(string)_ - An ISO 8601 datetime indicating when the report was generated.\n        \n    - `datetime_start` _(string)_ - The starting date of the of the time period covered by the report.\n        \n    - `datetime_end` _(string)_ - The end date of the report.\n        \n\n## Get Report\n\n`POST` `/userdata/protect/report`\n\nReturns a report in PDF format.\n\n### Request Payload\n\nAn `applied_filters` object containing the report ID.\n\n- `report_id` _(string)_ **(required)** - The report's UID.\n    \n\n### Response Payload\n\nThe content type will be `application/pdf`.\n\n## Upload Report\n\n`POST` `/userdata/protect/save_report`\n\nAllows users to submit their own reports.\n\n### Request Payload\n\nThe payload for this endpoint is `multipart/form-data` and must include two files:\n\n- `document` _(.pdf)_ **(required)** - This is the file being uploaded. It should be a PDF, though the API doesn't explicitly restrict other file types. Non-PDF files may not be viewable in the UI.\n    \n- `json_data` _(.json)_ **(required)** - A JSON file containing parameters pertaining to the file being uploaded.\n    \n    - `start_date` _(string)_ **(required)** - The start of the report in ISO 8601 format. This determines how the report is indexed by the UI and API.\n        \n    - `end_date` _(string)_ **(required)** - The end of the report.\n        \n    - `client_id` _(string)_ **(required)** - The account's UID.\n        \n\n### Response Payload\n\n- `status` _(boolean)_ - Either \"successful\" or \"unsuccessful.\"\n    \n- `message` _(string)_ - This will say \"Report Saved\" or provide a reason for why it was not saved.\n    \n- `report_id` _(string)_ - The newly-created report's UID."
+		},
+		{
+			"name": "List Management",
+			"item": [
+				{
+					"name": "Get Lists Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list?datatype=fqdn&type=allow",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list"
 							],
 							"query": [
 								{
-									"key": "name",
-									"value": "www.google.com"
+									"key": "datatype",
+									"value": "fqdn"
 								},
 								{
 									"key": "type",
-									"value": "AAAA",
+									"value": "allow"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"datatype\": \"domain\",\n    \"name\": \"postman-test3\",\n    \"type\": \"block\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/data/list",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/data?datatype=domain&type=deny",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"data"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "domain"
+								},
+								{
+									"key": "type",
+									"value": "deny"
+								},
+								{
+									"key": "listEnabled",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "itemEnabled",
+									"value": "true",
 									"disabled": true
 								}
 							]
@@ -656,161 +1087,319 @@
 					"response": []
 				},
 				{
-					"name": "Binary (Advanced)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"// Function to parse DNS binary response",
-									"function parseDNSResponse(buffer) {",
-									"    // Transaction ID",
-									"    const transactionID = buffer.readUInt16BE(0).toString(16);",
-									"",
-									"    // Flags",
-									"    const flags = buffer.readUInt16BE(2).toString(16);",
-									"",
-									"    // Question Count",
-									"    const qdcount = buffer.readUInt16BE(4);",
-									"",
-									"    // Answer Count",
-									"    const ancount = buffer.readUInt16BE(6);",
-									"",
-									"    // Start parsing the Question Section, assuming it starts at byte 12",
-									"    let position = 12;",
-									"    let question = \"\";",
-									"    while (buffer[position] !== 0) {",
-									"        if (question.length > 0) question += \".\";",
-									"        let labelLength = buffer[position];",
-									"        position += 1;",
-									"        question += buffer.toString('ascii', position, position + labelLength);",
-									"        position += labelLength;",
-									"    }",
-									"    // Move past the null byte and Type and Class",
-									"    position += 5;",
-									"",
-									"    // Parsing the Answer Section",
-									"    let answers = [];",
-									"    for (let i = 0; i < ancount; i++) {",
-									"        let answer = {};",
-									"        // Name (a pointer typically to the question section, shown as a 2 byte number)",
-									"        let namePointer = buffer.readUInt16BE(position);",
-									"        answer['NamePointer'] = namePointer;",
-									"        position += 2;",
-									"",
-									"        // Type",
-									"        answer['Type'] = buffer.readUInt16BE(position);",
-									"        position += 2;",
-									"",
-									"        // Class",
-									"        answer['Class'] = buffer.readUInt16BE(position);",
-									"        position += 2;",
-									"",
-									"        // TTL",
-									"        answer['TTL'] = buffer.readUInt32BE(position);",
-									"        position += 4;",
-									"",
-									"        // Data Length",
-									"        let dataLength = buffer.readUInt16BE(position);",
-									"        position += 2;",
-									"",
-									"        // Data",
-									"        answer['Data'] = buffer.slice(position, position + dataLength);",
-									"        position += dataLength;",
-									"",
-									"        answers.push(answer);",
-									"    }",
-									"",
-									"    return {",
-									"        TransactionID: transactionID,",
-									"        Flags: flags,",
-									"        QuestionCount: qdcount,",
-									"        Question: question,",
-									"        Type: 1,",
-									"        Class: 1,",
-									"        AnswerCount: ancount,",
-									"        Answers: answers",
-									"    };",
-									"}",
-									"",
-									"// Convert the ArrayBuffer (response body) to Buffer (Node.js style, which Postman uses)",
-									"const buffer = Buffer.from(pm.response.stream);",
-									"",
-									"// Parse the DNS response",
-									"const dnsResponse = parseDNSResponse(buffer);",
-									"",
-									"// Log or set an environment variable with the readable output",
-									"console.log(dnsResponse);",
-									"pm.environment.set(\"dnsResponse\", JSON.stringify(dnsResponse));",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
+					"name": "Get Aggregate List Data",
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-UltraDDR-Client-Id",
-								"value": "{{client_id}}",
+								"key": "Content-Type",
+								"value": "application/json",
 								"type": "text"
 							},
 							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/data",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"data"
+							],
+							"query": [
+								{
+									"key": "listEnabled",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "itemEnabled",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
 								"key": "Content-Type",
-								"value": "application/dns-message",
+								"value": "multipart/form-data",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "file",
-							"file": {
-								"src": "postman-cloud:///1ef6b8f0-6c6e-4c50-8e33-edae415905f7"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef745b4-dea2-4050-b4d1-bbbc07202d71"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/import?datatype=domain&enabled=true&name=postman-test-10&notes=test&type=deny",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"import"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "domain"
+								},
+								{
+									"key": "dryrun",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "enabled",
+									"value": "true"
+								},
+								{
+									"key": "name",
+									"value": "postman-test-10"
+								},
+								{
+									"key": "notes",
+									"value": "test"
+								},
+								{
+									"key": "type",
+									"value": "deny"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Lists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/search?datatype=domain&type=deny&value=example.com",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"search"
+							],
+							"query": [
+								{
+									"key": "datatype",
+									"value": "domain"
+								},
+								{
+									"key": "type",
+									"value": "deny"
+								},
+								{
+									"key": "value",
+									"value": "example.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Values",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/c6015d47-1ece-454c-8eae-fb7a7da72894",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"c6015d47-1ece-454c-8eae-fb7a7da72894"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/c6015d47-1ece-454c-8eae-fb7a7da72894",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"c6015d47-1ece-454c-8eae-fb7a7da72894"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update List",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": \"shanetest2.biz\\nshanetest3.biz\",\n  \"replace\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
 							}
 						},
 						"url": {
-							"raw": "{{resolver_endpoint}}/dns-query",
+							"raw": "{{api_endpoint}}/data/list/40ae64e8-b066-4e88-9ffe-815df06147da",
 							"host": [
-								"{{resolver_endpoint}}"
+								"{{api_endpoint}}"
 							],
 							"path": [
-								"dns-query"
+								"data",
+								"list",
+								"40ae64e8-b066-4e88-9ffe-815df06147da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create List Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"createdBy\": \"admin@ultraddr.com\",\n  \"enabled\": true,\n  \"notes\": \"foo\",\n  \"value\": \"bar.xyz\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/40ae64e8-b066-4e88-9ffe-815df06147da",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"40ae64e8-b066-4e88-9ffe-815df06147da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/c6015d47-1ece-454c-8eae-fb7a7da72894",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"c6015d47-1ece-454c-8eae-fb7a7da72894"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_endpoint}}/data/list/4160ecdf-c972-4b55-9074-ea91ac326efe/clear",
+							"host": [
+								"{{api_endpoint}}"
+							],
+							"path": [
+								"data",
+								"list",
+								"4160ecdf-c972-4b55-9074-ea91ac326efe",
+								"clear"
 							]
 						}
 					},
 					"response": []
 				}
 			],
-			"description": "Requests for sending DNS queries to the UDDR resolvers over HTTPS. This is the same transport layer used by the UDDR agent. This is a different endpoint, {{resolver_endpoint}}, which is not a part of the standard \"API.\" Queries are associated with an account using its \"client_id\" (also known as \"install_key\").\n\n# Endpoints\n\n## Querystring\n\n`GET` `/{{client_id}}`\n\nThe standard format for sending a DoH (DNS-over-HTTPS) request is supported.\n\n### Request Parameters\n\n- `name` _(string)_ **(required)** - An FQDN to query\n    \n- `type` _(string)_ **(optional)** - A DNS record type, i.e. A, AAAA, CNAME, etc.\n    \n\n### Response Payload\n\nThe response will be a dns+json. For more information, see \\[RFC 8484\\]([https://datatracker.ietf.org/doc/html/rfc8484](https://datatracker.ietf.org/doc/html/rfc8484)).\n\n## Binary\n\n`POST` `/dns-query`\n\nThe DNS resolvers will accept queries as a binary payload over HTTPS in the form of a POST request.\n\n### Request Payload\n\nYou will need to upload a `.bin` file to Postman. \\[Here\\]([https://github.com/sbarbett/dns_makebin](https://github.com/sbarbett/dns_makebin)) is a tool to help build basic queries in binary format.\n\n### Response Payload\n\nLikewise, the response will be in binary. You can download this from Postman as a file in raw format. There is also a post-request script that will interpret the binary stream and log it to the Postman console.",
-			"auth": {
-				"type": "noauth"
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"packages": {},
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"packages": {},
-						"exec": [
-							""
-						]
-					}
-				}
-			]
+			"description": "The List Management API contains extensive endpoints for curating custom lists of blocked or allowed content.\n\n# Endpoints\n\n## Get List Summary\n\n`GET` `/data/list`\n\nReturns a summary of existing lists.\n\n### Request Parameters\n\n- `datatype` _(string)_ **(required)** - The type of data contained in the list. Valid data types are \"fqdn,\" \"domain,\" \"registrar,\" \"ip,\" \"cidr,\" \"nameserver,\" and \"tld.\"\n    \n- `type` _(string)_ **(required)** - The type of list. Valid list types are \"deny,\" \"allow,\" and \"suspicious.\"\n    \n- `enabled` _(boolean)_ **(optional)** - Filter by enabled or disabled lists.\n    \n\n### Response Payload\n\n- `remote` _(list)_ - An array of objects representing lists that are populated through remote feeds.\n    \n    - `id` _(string)_\n        \n    - `name` _(string)_\n        \n    - `notes` _(string)_\n        \n    - `enabled` _(boolean)_\n        \n    - `deletable` _(boolean)_\n        \n    - `deleted` _(boolean)_\n        \n    - `url` _(string)_ - The source of the feed.\n        \n    - `interval` _(string)_ - How often the feed is ingested. Either \"hourly,\" \"daily,\" \"weekly,\" or \"monthly.\"\n        \n    - `itemCount` _(int)_\n        \n    - `enabledItemCount` _(int)_\n        \n- `local` _(list)_ - An array of objects representing lists created and managed locally through the application.\n    \n    - `id` _(string)_\n        \n    - `name` _(string)_\n        \n    - `enabled` _(boolean)_\n        \n    - `deletable` _(boolean)_\n        \n    - `deleted` _(boolean)_\n        \n    - `itemCount` _(int)_\n        \n    - `enabledItemCount` _(int)_\n        \n\n## Create List\n\n`POST` `/data/list`\n\nCreate a new list from scratch.\n\n### Request Payload\n\n- `datatype` _(string)_ **(required)**\n    \n- `name` _(string)_ **(required)**\n    \n- `type` _(string)_ **(required)**\n    \n- `data` _(string)_ **(optional)** - Data to be added to the list. If adding multiple items, separate them with line feed escape sequences (`\\n`). For example, `example1.com\\nexample2.com\\nexample3.com`.\n    \n- `createdBy` _(string)_ **(optional)** - The name of the user who creating the entry. By default it will be the username of the API key owner.\n    \n- `enabled` _(boolean)_ **(optional)**\n    \n- `notes` _(string)_ **(optional)**\n    \n- `interval` _(string)_ **(optional)** - Only applicable to lists populated from feeds.\n    \n- `url` _(string)_ **(optional)** - The url of the feed, if creating a remote list."
 		}
 	],
 	"auth": {
