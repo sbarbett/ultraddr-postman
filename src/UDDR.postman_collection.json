@@ -957,12 +957,12 @@
 								{
 									"key": "document",
 									"type": "file",
-									"src": "postman-cloud:///1ef6eb80-8bff-4390-997e-a8e57768ec2f"
+									"src": []
 								},
 								{
 									"key": "json_data",
 									"type": "file",
-									"src": "postman-cloud:///1ef6eb83-0f5d-45f0-8e9a-b11ec1b0c741"
+									"src": []
 								}
 							]
 						},
